@@ -1,21 +1,21 @@
 // @font-family-input/solid — composable, unstyled, virtualized Solid primitives.
 
 import {
-  createFontInput,
   type FontFilter,
   type FontInputState,
   type FontProvider,
+  createFontInput,
   handleComboboxKey,
 } from "@font-family-input/core";
 import { createVirtualizer } from "@tanstack/solid-virtual";
 import {
   type Accessor,
   type Component,
+  type JSX,
+  Show,
   createEffect,
   createSignal,
-  type JSX,
   onCleanup,
-  Show,
 } from "solid-js";
 import { Portal as SolidPortal } from "solid-js/web";
 import {
