@@ -30,7 +30,7 @@ you want against the store.
 All logic — state machine, filtering, keyboard handling, font loading, the
 provider contract — lives in `@font-family-input/core`, which has **no framework
 dependencies**. Framework packages are thin bindings. This is what lets the same
-behavior ship to React, Vue, Angular, and a Web Component.
+behavior ship to React, Vue, Svelte, Solid, Preact, and a Web Component.
 
 ## Any font source
 
