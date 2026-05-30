@@ -1,14 +1,14 @@
 <script lang="ts">
-  import type { FontProvider } from "@font-family-input/core";
-  import { Content, Empty, Item, List, Root, Search, Trigger } from "../lib/index";
+import type { FontProvider } from "@font-family-input/core";
+import { Content, Empty, Item, List, Root, Search, Trigger } from "../lib/index";
 
-  interface Props {
-    provider: FontProvider;
-    value?: string;
-    onValueChange?: (family: string) => void;
-  }
+interface Props {
+  provider: FontProvider;
+  value?: string;
+  onValueChange?: (family: string) => void;
+}
 
-  let { provider, value, onValueChange }: Props = $props();
+let { provider, value, onValueChange }: Props = $props();
 </script>
 
 <Root {provider} {value} {onValueChange}>

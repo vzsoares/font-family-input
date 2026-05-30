@@ -1,19 +1,19 @@
 <script lang="ts">
-  import { getContext, type Snippet } from "svelte";
-  import { handleComboboxKey } from "@font-family-input/core";
-  import { type FontInputContext, FONT_INPUT_KEY } from "./context";
-  import { comboboxTarget } from "./internal";
+import { handleComboboxKey } from "@font-family-input/core";
+import { type Snippet, getContext } from "svelte";
+import { FONT_INPUT_KEY, type FontInputContext } from "./context";
+import { comboboxTarget } from "./internal";
 
-  interface Props {
-    placeholder?: string;
-    previewFont?: boolean;
-    children?: Snippet<[string]>;
-    [key: string]: unknown;
-  }
+interface Props {
+  placeholder?: string;
+  previewFont?: boolean;
+  children?: Snippet<[string]>;
+  [key: string]: unknown;
+}
 
-  let { placeholder = "Select font…", previewFont = true, children, ...rest }: Props = $props();
-  // Aliased to avoid colliding with the `$state` rune.
-  const { store, state: fontState, ids, refs } = getContext<FontInputContext>(FONT_INPUT_KEY);
+let { placeholder = "Select font…", previewFont = true, children, ...rest }: Props = $props();
+// Aliased to avoid colliding with the `$state` rune.
+const { store, state: fontState, ids, refs } = getContext<FontInputContext>(FONT_INPUT_KEY);
 </script>
 
 <button

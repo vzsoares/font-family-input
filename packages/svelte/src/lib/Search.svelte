@@ -1,16 +1,16 @@
 <script lang="ts">
-  import { getContext } from "svelte";
-  import { handleComboboxKey } from "@font-family-input/core";
-  import { type FontInputContext, FONT_INPUT_KEY } from "./context";
-  import { comboboxTarget } from "./internal";
+import { handleComboboxKey } from "@font-family-input/core";
+import { getContext } from "svelte";
+import { FONT_INPUT_KEY, type FontInputContext } from "./context";
+import { comboboxTarget } from "./internal";
 
-  interface Props {
-    placeholder?: string;
-    [key: string]: unknown;
-  }
+interface Props {
+  placeholder?: string;
+  [key: string]: unknown;
+}
 
-  let { placeholder = "Search fonts…", ...rest }: Props = $props();
-  const { store, state: fontState, ids, refs } = getContext<FontInputContext>(FONT_INPUT_KEY);
+let { placeholder = "Search fonts…", ...rest }: Props = $props();
+const { store, state: fontState, ids, refs } = getContext<FontInputContext>(FONT_INPUT_KEY);
 </script>
 
 <input

@@ -38,12 +38,12 @@
   "overrides": [
     {
       "include": [
-        "packages/react/src/primitives/**",
-        "packages/preact/src/primitives.tsx",
-        "packages/solid/src/index.tsx",
-        "packages/vue/src/components/**",
-        "packages/svelte/src/lib/**",
-        "packages/html/src/element.ts"
+        "packages/react/src/**",
+        "packages/preact/src/**",
+        "packages/solid/src/**",
+        "packages/vue/src/**",
+        "packages/svelte/src/**",
+        "packages/html/src/**"
       ],
       "linter": {
         "rules": {
@@ -54,6 +54,16 @@
           },
           "correctness": {
             "useExhaustiveDependencies": "off"
+          }
+        }
+      }
+    },
+    {
+      "include": ["packages/svelte/src/**/*.svelte"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useConst": "off"
           }
         }
       }

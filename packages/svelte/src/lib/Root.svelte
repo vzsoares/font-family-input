@@ -1,52 +1,52 @@
 <script lang="ts">
-  import { onDestroy, setContext, type Snippet } from "svelte";
-  import type { FontFilter, FontProvider } from "@font-family-input/core";
-  import { createFontContext, FONT_INPUT_KEY } from "./context";
+import type { FontFilter, FontProvider } from "@font-family-input/core";
+import { type Snippet, onDestroy, setContext } from "svelte";
+import { FONT_INPUT_KEY, createFontContext } from "./context";
 
-  interface Props {
-    value?: string;
-    defaultValue?: string;
-    provider?: FontProvider;
-    filter?: FontFilter;
-    loadOnHighlight?: boolean;
-    onValueChange?: (family: string) => void;
-    onOpenChange?: (open: boolean) => void;
-    children?: Snippet;
+interface Props {
+  value?: string;
+  defaultValue?: string;
+  provider?: FontProvider;
+  filter?: FontFilter;
+  loadOnHighlight?: boolean;
+  onValueChange?: (family: string) => void;
+  onOpenChange?: (open: boolean) => void;
+  children?: Snippet;
+}
+
+let {
+  value = $bindable(undefined),
+  defaultValue,
+  provider,
+  filter,
+  loadOnHighlight = true,
+  onValueChange,
+  onOpenChange,
+  children,
+}: Props = $props();
+
+const ctx = createFontContext({
+  initialValue: value ?? defaultValue,
+  provider,
+  filter,
+  loadOnHighlight,
+  onChange: (family) => {
+    value = family;
+    onValueChange?.(family);
+  },
+  onOpenChange,
+});
+
+setContext(FONT_INPUT_KEY, ctx);
+
+// Reconcile controlled value.
+$effect(() => {
+  if (value !== undefined && value !== ctx.store.getState().value) {
+    ctx.store.setValue(value);
   }
+});
 
-  let {
-    value = $bindable(undefined),
-    defaultValue,
-    provider,
-    filter,
-    loadOnHighlight = true,
-    onValueChange,
-    onOpenChange,
-    children,
-  }: Props = $props();
-
-  const ctx = createFontContext({
-    initialValue: value ?? defaultValue,
-    provider,
-    filter,
-    loadOnHighlight,
-    onChange: (family) => {
-      value = family;
-      onValueChange?.(family);
-    },
-    onOpenChange,
-  });
-
-  setContext(FONT_INPUT_KEY, ctx);
-
-  // Reconcile controlled value.
-  $effect(() => {
-    if (value !== undefined && value !== ctx.store.getState().value) {
-      ctx.store.setValue(value);
-    }
-  });
-
-  onDestroy(() => ctx.store.destroy());
+onDestroy(() => ctx.store.destroy());
 </script>
 
 {@render children?.()}

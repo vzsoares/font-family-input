@@ -1,9 +1,9 @@
 import {
-  createFontInput,
   type FontFilter,
   type FontInputState,
   type FontInputStore,
   type FontProvider,
+  createFontInput,
 } from "@font-family-input/core";
 import type { Readable } from "svelte/store";
 
