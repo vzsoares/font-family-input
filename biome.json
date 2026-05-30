@@ -53,7 +53,8 @@
             "useKeyWithClickEvents": "off"
           },
           "correctness": {
-            "useExhaustiveDependencies": "off"
+            "useExhaustiveDependencies": "off",
+            "useJsxKeyInIterable": "off"
           }
         }
       }
