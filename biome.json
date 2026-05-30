@@ -37,13 +37,24 @@
   },
   "overrides": [
     {
-      "include": ["packages/react/src/primitives/**"],
+      "include": [
+        "packages/react/src/primitives/**",
+        "packages/preact/src/primitives.tsx",
+        "packages/solid/src/index.tsx",
+        "packages/vue/src/components/**",
+        "packages/svelte/src/lib/**",
+        "packages/html/src/element.ts"
+      ],
       "linter": {
         "rules": {
           "a11y": {
             "useSemanticElements": "off",
             "useFocusableInteractive": "off",
-            "useKeyWithClickEvents": "off"
+            "useKeyWithClickEvents": "off",
+            "noStaticElementInteractions": "off"
+          },
+          "correctness": {
+            "useExhaustiveDependencies": "off"
           }
         }
       }

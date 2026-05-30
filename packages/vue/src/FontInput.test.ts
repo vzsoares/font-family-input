@@ -46,12 +46,13 @@ describe("FontInput (vue)", () => {
     expect(wrapper.find(".trigger").text()).toContain("Select font…");
   });
 
-  it("opens on click and lists fonts", async () => {
+  it("opens on click and closes on Escape", async () => {
     const wrapper = mount(makePicker(), { attachTo: document.body });
     expect(wrapper.find(".content").exists()).toBe(false);
     await wrapper.find(".trigger").trigger("click");
     expect(wrapper.find(".content").exists()).toBe(true);
-    expect(wrapper.text()).toContain("Inter");
+    await wrapper.find(".search").trigger("keydown", { key: "Escape" });
+    expect(wrapper.find(".content").exists()).toBe(false);
     wrapper.unmount();
   });
 

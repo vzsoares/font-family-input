@@ -102,7 +102,10 @@ export function Content({
   );
 }
 
-export type SearchProps = Omit<JSX.HTMLAttributes<HTMLInputElement>, "value" | "onChange">;
+export interface SearchProps
+  extends Omit<JSX.HTMLAttributes<HTMLInputElement>, "value" | "onChange"> {
+  placeholder?: string;
+}
 
 export function Search({ placeholder = "Search fonts…", ...rest }: SearchProps): JSX.Element {
   const { store, state, ids, inputRef } = useFontInputContext("Search");

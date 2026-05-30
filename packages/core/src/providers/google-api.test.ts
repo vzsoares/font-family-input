@@ -12,7 +12,7 @@ function jsonResponse(body: unknown, ok = true, status = 200): Response {
 
 describe("googleFontsApiProvider", () => {
   it("fetches and maps the live catalog", async () => {
-    const fetchImpl = vi.fn((_url: string) =>
+    const fetchImpl = vi.fn((_input: RequestInfo | URL) =>
       Promise.resolve(
         jsonResponse({
           items: [
@@ -38,7 +38,10 @@ describe("googleFontsApiProvider", () => {
   });
 
   it("caches the catalog across calls", async () => {
-    const fetchImpl = vi.fn((_url: string) => Promise.resolve(jsonResponse({ items: [] })));
+    const fetchImpl = vi.fn(
+      (_input: RequestInfo | URL): Promise<Response> =>
+        Promise.resolve(jsonResponse({ items: [] })),
+    );
     const provider = googleFontsApiProvider({ apiKey: "k", fetch: fetchImpl });
     await provider.listFonts();
     await provider.listFonts();
@@ -46,14 +49,19 @@ describe("googleFontsApiProvider", () => {
   });
 
   it("falls back to the bundled list on a failed request", async () => {
-    const fetchImpl = vi.fn((_url: string) => Promise.resolve(jsonResponse({}, false, 403)));
+    const fetchImpl = vi.fn(
+      (_input: RequestInfo | URL): Promise<Response> =>
+        Promise.resolve(jsonResponse({}, false, 403)),
+    );
     const provider = googleFontsApiProvider({ apiKey: "bad", fetch: fetchImpl });
     const fonts = await provider.listFonts();
     expect(fonts).toEqual([...GOOGLE_FONTS]);
   });
 
   it("falls back when fetch throws", async () => {
-    const fetchImpl = vi.fn((_url: string) => Promise.reject(new Error("network")));
+    const fetchImpl = vi.fn(
+      (_input: RequestInfo | URL): Promise<Response> => Promise.reject(new Error("network")),
+    );
     const provider = googleFontsApiProvider({ apiKey: "k", fetch: fetchImpl });
     const fonts = await provider.listFonts();
     expect(fonts).toEqual([...GOOGLE_FONTS]);
