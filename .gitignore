@@ -12,6 +12,9 @@ playwright-report/
 **/.vitepress/cache/
 **/.vitepress/dist/
 
+# Svelte package build artifacts
+**/.svelte-kit/
+
 # Local Claude settings
 .claude/settings.local.json
 .claude/scheduled_tasks.lock

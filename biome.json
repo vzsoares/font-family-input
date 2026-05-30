@@ -50,8 +50,7 @@
           "a11y": {
             "useSemanticElements": "off",
             "useFocusableInteractive": "off",
-            "useKeyWithClickEvents": "off",
-            "noStaticElementInteractions": "off"
+            "useKeyWithClickEvents": "off"
           },
           "correctness": {
             "useExhaustiveDependencies": "off"
