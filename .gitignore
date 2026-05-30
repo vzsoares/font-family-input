@@ -1,0 +1,16 @@
+node_modules/
+dist/
+*.tsbuildinfo
+storybook-static/
+coverage/
+test-results/
+playwright-report/
+.DS_Store
+*.log
+
+# VitePress build artifacts
+**/.vitepress/cache/
+**/.vitepress/dist/
+
+# Local Claude settings
+.claude/settings.local.json

@@ -1,0 +1,49 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+
+      # Packages must be built first — docs/playground consume their dist.
+      - run: bun run --filter '@font-family-input/core' build
+      - run: bun run --filter '@font-family-input/react' build
+      - run: bun run --filter '@font-family-input/docs' build
+      - run: bun run --filter '@font-family-input/playground' build
+
+      - name: Assemble site (docs at /, playground at /preview)
+        run: |
+          mkdir -p _site/preview
+          cp -r apps/docs/.vitepress/dist/* _site/
+          cp -r apps/playground/dist/* _site/preview/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
