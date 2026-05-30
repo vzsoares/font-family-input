@@ -25,7 +25,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@font-family-input/core": "workspace:*",
-    "@tanstack/virtual-core": "^3.11.2"
+    "@font-family-input/core": "workspace:*"
   }
 }
