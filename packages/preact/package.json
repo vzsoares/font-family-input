@@ -1,23 +1,20 @@
 {
-  "name": "@font-family-input/html",
+  "name": "@font-family-input/preact",
   "version": "0.0.0",
-  "description": "A framework-agnostic <font-family-input> custom element for picking font families.",
+  "description": "Composable, unstyled Preact primitives for a virtualized font-family picker.",
   "type": "module",
   "license": "MIT",
-  "sideEffects": ["**/define.*", "**/*.css"],
+  "sideEffects": false,
   "files": ["dist"],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "unpkg": "./dist/index.umd.cjs",
-  "jsdelivr": "./dist/index.umd.cjs",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    },
-    "./dist/index.umd.cjs": "./dist/index.umd.cjs"
+    }
   },
   "scripts": {
     "build": "vite build",
@@ -27,5 +24,12 @@
   "dependencies": {
     "@font-family-input/core": "workspace:*",
     "@tanstack/virtual-core": "^3.11.2"
+  },
+  "peerDependencies": {
+    "preact": ">=10"
+  },
+  "devDependencies": {
+    "@testing-library/preact": "^3.2.4",
+    "preact": "^10.25.4"
   }
 }

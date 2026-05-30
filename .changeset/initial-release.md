@@ -2,6 +2,7 @@
 "@font-family-input/core": minor
 "@font-family-input/react": minor
 "@font-family-input/vue": minor
+"@font-family-input/preact": minor
 "@font-family-input/html": minor
 ---
 
@@ -19,6 +20,9 @@ Initial release: a composable, headless, virtualized font-family picker.
 - `@font-family-input/vue` — the same primitives for Vue 3 (`FontInputRoot`,
   `FontInputTrigger`, …) with `v-model`, virtualization via
   `@tanstack/vue-virtual`, and a `useFontInput` composable.
+- `@font-family-input/preact` — the React primitives ported to Preact
+  (`FontInput.Root`, …) with virtualization via `@tanstack/virtual-core`.
 - `@font-family-input/html` — a framework-agnostic `<font-family-input>` custom
   element wrapping the core, styleable via `::part(...)`, emitting a `change`
-  event on selection.
+  event on selection. Ships a self-contained UMD build for CDN/`<script>` use
+  (unpkg / jsdelivr).

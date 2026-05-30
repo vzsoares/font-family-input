@@ -5,4 +5,5 @@ export default defineWorkspace([
   "packages/react",
   "packages/vue",
   "packages/html",
+  "packages/preact",
 ]);

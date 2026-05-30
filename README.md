@@ -31,10 +31,10 @@ unstyled adapter you compose and style yourself.
 | [`@font-family-input/core`](./packages/core) | Headless engine: store, filter, keyboard, provider contract, Google + live-API providers | ✅ initial |
 | [`@font-family-input/react`](./packages/react) | Composable, unstyled, virtualized React primitives | ✅ initial |
 | [`@font-family-input/vue`](./packages/vue) | Composable, unstyled, virtualized Vue 3 primitives | ✅ initial |
-| [`@font-family-input/html`](./packages/html) | `<font-family-input>` Web Component | ✅ initial |
+| [`@font-family-input/preact`](./packages/preact) | Composable, unstyled, virtualized Preact primitives | ✅ initial |
+| [`@font-family-input/html`](./packages/html) | `<font-family-input>` Web Component (CDN-ready) | ✅ initial |
 | `@font-family-input/angular` | Angular adapter | 🔜 planned |
 | `@font-family-input/svelte` | Svelte adapter | 🔜 planned |
-| `@font-family-input/preact` | Preact adapter | 🔜 planned |
 | `@font-family-input/solid` | Solid adapter | 🔜 planned |
 
 ## Quick start (React)
@@ -98,10 +98,36 @@ const provider = googleFontsApiProvider({ apiKey: import.meta.env.VITE_GF_KEY })
 // Vue
 import { FontInputRoot, FontInputTrigger /* … */ } from "@font-family-input/vue";
 
+// Preact
+import { FontInput } from "@font-family-input/preact";
+
 // Plain HTML / any framework — a custom element
 import { defineFontFamilyInput } from "@font-family-input/html";
 defineFontFamilyInput();
 // <font-family-input value="Inter"></font-family-input>
+```
+
+### From a CDN (no build step)
+
+The Web Component ships a self-contained UMD bundle, so it works straight from
+[unpkg](https://unpkg.com) or [jsDelivr](https://www.jsdelivr.com):
+
+```html
+<script src="https://unpkg.com/@font-family-input/html"></script>
+<script>
+  FontFamilyInput.defineFontFamilyInput();
+</script>
+
+<font-family-input value="Inter" placeholder="Pick a font"></font-family-input>
+```
+
+Or as an ES module:
+
+```html
+<script type="module">
+  import { defineFontFamilyInput } from "https://unpkg.com/@font-family-input/html?module";
+  defineFontFamilyInput();
+</script>
 ```
 
 ## Documentation & live preview

@@ -1,7 +1,7 @@
 import type { FontProvider } from "@font-family-input/core";
 import { mount } from "@vue/test-utils";
-import { defineComponent, h, nextTick } from "vue";
 import { describe, expect, it, vi } from "vitest";
+import { defineComponent, h, nextTick } from "vue";
 import {
   FontInputContent,
   FontInputEmpty,
