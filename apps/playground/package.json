@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@font-family-input/html": "workspace:*",
     "@font-family-input/react": "workspace:*"
   },
   "devDependencies": {

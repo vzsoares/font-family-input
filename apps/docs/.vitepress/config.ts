@@ -24,6 +24,11 @@ export default defineConfig({
         items: [
           { text: "@font-family-input/core", link: "/guide/core" },
           { text: "@font-family-input/react", link: "/guide/react" },
+          { text: "@font-family-input/vue", link: "/guide/vue" },
+          { text: "@font-family-input/svelte", link: "/guide/svelte" },
+          { text: "@font-family-input/solid", link: "/guide/solid" },
+          { text: "@font-family-input/preact", link: "/guide/preact" },
+          { text: "@font-family-input/html", link: "/guide/html" },
         ],
       },
       {

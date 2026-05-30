@@ -28,33 +28,50 @@ const customProvider: FontProvider = {
     { family: "Roboto Mono" },
     { family: "Lobster" },
     { family: "Playfair Display" },
+    { family: "Space Grotesk" },
+    { family: "Dancing Script" },
   ],
   loadFont: () => {},
 };
 
 export function App() {
-  const [font, setFont] = useState("Playfair Display");
+  const [controlled, setControlled] = useState("Playfair Display");
 
   return (
     <main className="page">
       <h1>font-family-input</h1>
       <p className="lead">Headless, composable, virtualized font pickers. Live playground.</p>
 
-      <div className="field">
-        <span className="lbl">Uncontrolled (defaults to Inter)</span>
-        <Picker defaultValue="Inter" />
-      </div>
+      <section className="section">
+        <h2>React adapter</h2>
 
-      <div className="field">
-        <span className="lbl">Controlled</span>
-        <Picker value={font} onValueChange={setFont} />
-        <code>value: {font || "(none)"}</code>
-      </div>
+        <div className="field">
+          <span className="lbl">Uncontrolled (defaults to Inter)</span>
+          <Picker defaultValue="Inter" />
+        </div>
 
-      <div className="field">
-        <span className="lbl">Custom provider (no-op loader)</span>
-        <Picker provider={customProvider} />
-      </div>
+        <div className="field">
+          <span className="lbl">Controlled</span>
+          <Picker value={controlled} onValueChange={setControlled} />
+          <code>value: {controlled || "(none)"}</code>
+        </div>
+
+        <div className="field">
+          <span className="lbl">Custom provider (6 fonts, no-op loader)</span>
+          <Picker provider={customProvider} />
+        </div>
+      </section>
+
+      <section className="section">
+        <h2>Web Component</h2>
+        <p className="note">
+          The <code>&lt;font-family-input&gt;</code> custom element is registered on this page:
+        </p>
+        <div className="field">
+          {/* @ts-expect-error — custom element */}
+          <font-family-input value="Space Grotesk" class="wc-picker" />
+        </div>
+      </section>
     </main>
   );
 }

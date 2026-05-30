@@ -2,42 +2,33 @@
 
 > Composable, headless, virtualized font-family pickers for the web — one core, every framework, any font source.
 
-`font-family-input` extracts the font picker into a set of framework-agnostic
-npm packages. All the logic lives in a headless core; each framework gets a thin,
-unstyled adapter you compose and style yourself.
-
-> [!NOTE]
-> **Early / initial phase.** The `core` and `react` packages are functional and
-> tested; the API may still change before a stable `1.0`. Vue, Angular, and a Web
-> Component are on the roadmap.
+`font-family-input` extracts the font picker into a set of framework-agnostic npm packages. All the logic lives in a headless core; each framework gets a thin, unstyled adapter you compose and style yourself.
 
 ## Why
 
-- **🧩 Composable** — assemble the picker from unstyled primitives (`Root`,
-  `Trigger`, `Content`, `Search`, `List`, `Item`, `Empty`) with your own markup.
+- **🧩 Composable** — assemble the picker from unstyled primitives (`Root`, `Trigger`, `Content`, `Search`, `List`, `Item`, `Empty`) with your own markup.
 - **🎨 Headless** — ships behavior, ARIA, and `data-*` hooks only. Zero CSS.
-- **⚡ Virtualized** — powered by [TanStack Virtual](https://tanstack.com/virtual);
-  large catalogs stay smooth.
-- **🔌 Any font source** — Google Fonts works out of the box and offline.
-  Implement the `FontProvider` contract for self-hosted, Bunny, Adobe, anything.
-- **♿ Accessible** — full WAI-ARIA combobox pattern (arrows, type-ahead,
-  Home/End, Enter/Escape).
+- **⚡ Virtualized** — powered by [TanStack Virtual](https://tanstack.com/virtual); large catalogs stay smooth.
+- **🔌 Any font source** — Google Fonts works out of the box and offline. Implement the `FontProvider` contract for self-hosted, Bunny, Adobe, anything.
+- **♿ Accessible** — full WAI-ARIA combobox pattern (arrows, type-ahead, Home/End, Enter/Escape).
 - **🪶 Framework-agnostic** — a dependency-free core with thin adapters.
 
 ## Packages
 
 | Package | Description | Status |
 | ------- | ----------- | ------ |
-| [`@font-family-input/core`](./packages/core) | Headless engine: store, filter, keyboard, provider contract, Google + live-API providers | ✅ initial |
-| [`@font-family-input/react`](./packages/react) | Composable, unstyled, virtualized React primitives | ✅ initial |
-| [`@font-family-input/vue`](./packages/vue) | Composable, unstyled, virtualized Vue 3 primitives | ✅ initial |
-| [`@font-family-input/preact`](./packages/preact) | Composable, unstyled, virtualized Preact primitives | ✅ initial |
-| [`@font-family-input/solid`](./packages/solid) | Composable, unstyled, virtualized Solid primitives | ✅ initial |
-| [`@font-family-input/html`](./packages/html) | `<font-family-input>` Web Component (CDN-ready) | ✅ initial |
-| `@font-family-input/svelte` | Svelte adapter | 🔜 planned |
+| [`@font-family-input/core`](./packages/core) | Headless engine: store, filter, keyboard, provider contract, Google + live-API providers | ✅ v0 |
+| [`@font-family-input/react`](./packages/react) | Composable, unstyled, virtualized React primitives | ✅ v0 |
+| [`@font-family-input/vue`](./packages/vue) | Composable, unstyled, virtualized Vue 3 primitives | ✅ v0 |
+| [`@font-family-input/preact`](./packages/preact) | Composable, unstyled, virtualized Preact primitives | ✅ v0 |
+| [`@font-family-input/solid`](./packages/solid) | Composable, unstyled, virtualized Solid primitives | ✅ v0 |
+| [`@font-family-input/svelte`](./packages/svelte) | Composable, unstyled, virtualized Svelte 5 primitives | ✅ v0 |
+| [`@font-family-input/html`](./packages/html) | `<font-family-input>` Web Component, CDN-ready UMD build | ✅ v0 |
 | `@font-family-input/angular` | Angular adapter | 🔜 planned |
 
-## Quick start (React)
+## Quick start
+
+### React
 
 ```bash
 bun add @font-family-input/react @tanstack/react-virtual
@@ -49,7 +40,6 @@ import { useState } from "react";
 
 export function FontPicker() {
   const [font, setFont] = useState("");
-
   return (
     <FontInput.Root value={font} onValueChange={setFont}>
       <FontInput.Trigger />
@@ -57,9 +47,7 @@ export function FontPicker() {
         <FontInput.Content className="popover">
           <FontInput.Search />
           <FontInput.List style={{ maxHeight: 320 }}>
-            {(item) => (
-              <FontInput.Item key={item.family}>{item.family}</FontInput.Item>
-            )}
+            {(item) => <FontInput.Item key={item.family}>{item.family}</FontInput.Item>}
           </FontInput.List>
           <FontInput.Empty>No fonts found</FontInput.Empty>
         </FontInput.Content>
@@ -69,65 +57,155 @@ export function FontPicker() {
 }
 ```
 
-Everything renders unstyled — style it via `className`, inline `style`, or the
-`data-state` / `data-highlighted` / `data-selected` attributes.
+### Vue 3
+
+```bash
+bun add @font-family-input/vue @tanstack/vue-virtual
+```
+
+```vue
+<script setup lang="ts">
+import { FontInputRoot, FontInputTrigger, FontInputContent, FontInputSearch, FontInputList, FontInputItem, FontInputEmpty } from "@font-family-input/vue";
+import { ref } from "vue";
+const font = ref("");
+</script>
+
+<template>
+  <FontInputRoot v-model="font">
+    <FontInputTrigger />
+    <FontInputContent>
+      <FontInputSearch />
+      <FontInputList style="max-height: 320px">
+        <template #default="{ font: item, index }">
+          <FontInputItem :font="item" :index="index" />
+        </template>
+      </FontInputList>
+      <FontInputEmpty>No fonts found</FontInputEmpty>
+    </FontInputContent>
+  </FontInputRoot>
+</template>
+```
+
+### Svelte 5
+
+```bash
+bun add @font-family-input/svelte
+```
+
+```svelte
+<script lang="ts">
+  import { Root, Trigger, Content, Search, List, Item, Empty } from "@font-family-input/svelte";
+  let font = $state("");
+</script>
+
+<Root bind:value={font}>
+  <Trigger />
+  <Content>
+    <Search />
+    <List>
+      {#snippet children(item, index)}
+        <Item {font={item}} {index} />
+      {/snippet}
+    </List>
+    <Empty>No fonts found</Empty>
+  </Content>
+</Root>
+```
+
+### Solid
+
+```bash
+bun add @font-family-input/solid @tanstack/solid-virtual
+```
+
+```tsx
+import { FontInput } from "@font-family-input/solid";
+
+function FontPicker() {
+  const [font, setFont] = createSignal("");
+  return (
+    <FontInput.Root value={font()} onValueChange={setFont}>
+      <FontInput.Trigger />
+      <FontInput.Content>
+        <FontInput.Search />
+        <FontInput.List style={{ "max-height": "320px" }}>
+          {(item) => <FontInput.Item>{item.family}</FontInput.Item>}
+        </FontInput.List>
+        <FontInput.Empty>No fonts found</FontInput.Empty>
+      </FontInput.Content>
+    </FontInput.Root>
+  );
+}
+```
+
+### Preact
+
+```bash
+bun add @font-family-input/preact
+```
+
+```tsx
+import { FontInput } from "@font-family-input/preact";
+import { useState } from "preact/hooks";
+
+function FontPicker() {
+  const [font, setFont] = useState("");
+  return (
+    <FontInput.Root value={font} onValueChange={setFont}>
+      <FontInput.Trigger />
+      <FontInput.Content>
+        <FontInput.Search />
+        <FontInput.List style={{ maxHeight: 320 }}>
+          {(item) => <FontInput.Item>{item.family}</FontInput.Item>}
+        </FontInput.List>
+        <FontInput.Empty>No fonts found</FontInput.Empty>
+      </FontInput.Content>
+    </FontInput.Root>
+  );
+}
+```
+
+### Web Component / Plain HTML
+
+```bash
+bun add @font-family-input/html
+```
+
+```ts
+import { defineFontFamilyInput } from "@font-family-input/html";
+defineFontFamilyInput();
+```
+
+```html
+<font-family-input value="Inter" placeholder="Pick a font"></font-family-input>
+```
+
+Or straight from a CDN — no build step needed:
+
+```html
+<script src="https://unpkg.com/@font-family-input/html"></script>
+<script>FontFamilyInput.defineFontFamilyInput();</script>
+
+<font-family-input value="Inter" placeholder="Pick a font"></font-family-input>
+```
 
 ### Custom font source
 
 ```ts
 import type { FontProvider } from "@font-family-input/core";
 
+// Self-hosted / @font-face already loaded on the page
 const myProvider: FontProvider = {
   listFonts: () => [{ family: "My Brand Sans" }, { family: "My Brand Serif" }],
-  loadFont: () => {}, // already loaded via @font-face
+  loadFont: () => {},
 };
 ```
 
-Or fetch the full live Google Fonts catalog (≈1,800 families) with an API key —
-falls back to the bundled list on error:
+Or the full live Google Fonts catalog (≈1,800 families) with an API key:
 
 ```ts
 import { googleFontsApiProvider } from "@font-family-input/core";
-
 const provider = googleFontsApiProvider({ apiKey: import.meta.env.VITE_GF_KEY });
-```
-
-### Other frameworks
-
-```ts
-// Vue
-import { FontInputRoot, FontInputTrigger /* … */ } from "@font-family-input/vue";
-
-// Preact
-import { FontInput } from "@font-family-input/preact";
-
-// Plain HTML / any framework — a custom element
-import { defineFontFamilyInput } from "@font-family-input/html";
-defineFontFamilyInput();
-// <font-family-input value="Inter"></font-family-input>
-```
-
-### From a CDN (no build step)
-
-The Web Component ships a self-contained UMD bundle, so it works straight from
-[unpkg](https://unpkg.com) or [jsDelivr](https://www.jsdelivr.com):
-
-```html
-<script src="https://unpkg.com/@font-family-input/html"></script>
-<script>
-  FontFamilyInput.defineFontFamilyInput();
-</script>
-
-<font-family-input value="Inter" placeholder="Pick a font"></font-family-input>
-```
-
-Or as an ES module:
-
-```html
-<script type="module">
-  import { defineFontFamilyInput } from "https://unpkg.com/@font-family-input/html?module";
-  defineFontFamilyInput();
-</script>
 ```
 
 ## Documentation & live preview
@@ -151,8 +229,7 @@ bun run docs:dev        # run the docs site locally
 bun run playground:dev  # run the playground locally
 ```
 
-See [`AGENTS.md`](./AGENTS.md) for the contributor quality gate and
-[`PLAN.md`](./PLAN.md) for the architecture and roadmap.
+See [`AGENTS.md`](./AGENTS.md) for the contributor quality gate and [`PLAN.md`](./PLAN.md) for the architecture and roadmap.
 
 ### Releasing
 

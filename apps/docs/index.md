@@ -4,7 +4,7 @@ layout: home
 hero:
   name: font-family-input
   text: Composable font pickers
-  tagline: A headless, unstyled, virtualized font-family picker. One core, every framework, any font source.
+  tagline: Headless, unstyled, virtualized. One core — React, Vue, Svelte, Solid, Preact, Web Component.
   actions:
     - theme: brand
       text: Get Started
@@ -26,7 +26,7 @@ features:
     details: Ships behavior, ARIA, and data-attributes only. Zero CSS. Style it with Tailwind, vanilla CSS, or anything else.
   - icon: ⚡
     title: Virtualized by default
-    details: Powered by TanStack Virtual, so catalogs of thousands of fonts stay smooth.
+    details: Powered by TanStack Virtual, so catalogs of thousands of fonts stay smooth in every framework.
   - icon: 🔌
     title: Any font source
     details: Google Fonts works out of the box and offline. Implement the FontProvider contract for self-hosted, Bunny, Adobe, or anything.
@@ -34,6 +34,6 @@ features:
     title: Accessible
     details: Full WAI-ARIA combobox pattern — arrow keys, type-ahead, Home/End, Enter/Escape, screen-reader support.
   - icon: 🪶
-    title: Tiny & framework-agnostic
-    details: A framework-free core with thin adapters. React today; Vue, Angular, and a Web Component next.
+    title: Every framework
+    details: React, Vue 3, Svelte 5, Solid, Preact, and a plain HTML Web Component. One framework-free core, thin adapters.
 ---

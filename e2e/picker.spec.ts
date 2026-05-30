@@ -12,7 +12,8 @@ test("opens, filters, and selects with the mouse", async ({ page }) => {
   await expect(content).toBeVisible();
 
   await page.getByTestId("search").first().fill("Roboto");
-  const option = page.getByText("Roboto Mono", { exact: true });
+  // Scope the option click to the open content panel to avoid ambiguity.
+  const option = content.getByText("Roboto Mono", { exact: true });
   await expect(option).toBeVisible();
   await option.click();
 

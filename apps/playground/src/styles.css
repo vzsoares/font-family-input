@@ -12,7 +12,7 @@ body {
 }
 
 .page {
-  max-width: 560px;
+  max-width: 640px;
   margin: 0 auto;
 }
 .page h1 {
@@ -23,22 +23,41 @@ body {
   color: #52525b;
   margin: 0 0 32px;
 }
+
+.section {
+  margin-bottom: 48px;
+}
+.section h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #3f3f46;
+  margin: 0 0 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e4e4e7;
+}
+
 .field {
   display: grid;
   gap: 6px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
-.field > .lbl {
+.lbl {
   display: block;
   font-size: 13px;
   font-weight: 600;
   color: #3f3f46;
+}
+.note {
+  font-size: 13px;
+  color: #52525b;
+  margin: 0 0 12px;
 }
 .field code {
   font-size: 12px;
   color: #6366f1;
 }
 
+/* React picker styles */
 .ffi-trigger {
   display: flex;
   align-items: center;
@@ -94,5 +113,69 @@ body {
   background: #eef2ff;
 }
 .ffi-item[data-selected] {
+  color: #4338ca;
+}
+.ffi-empty {
+  padding: 16px;
+  font-size: 13px;
+  color: #71717a;
+  text-align: center;
+}
+
+/* Web Component styles */
+.wc-picker {
+  display: block;
+}
+.wc-picker::part(trigger) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  font-size: 14px;
+  border: 1px solid #d4d4d8;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  min-width: 280px;
+}
+.wc-picker::part(trigger)[data-state="open"] {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px #6366f133;
+}
+.wc-picker::part(content) {
+  position: absolute;
+  z-index: 10;
+  margin-top: 6px;
+  width: 280px;
+  background: #fff;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  box-shadow: 0 12px 32px -12px #00000033;
+  overflow: hidden;
+}
+.wc-picker::part(search) {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border: 0;
+  border-bottom: 1px solid #e4e4e7;
+  outline: none;
+  box-sizing: border-box;
+}
+.wc-picker::part(list) {
+  max-height: 300px;
+}
+.wc-picker::part(option) {
+  padding: 9px 12px;
+  font-size: 15px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wc-picker::part(option)[data-highlighted] {
+  background: #eef2ff;
+}
+.wc-picker::part(option)[data-selected] {
   color: #4338ca;
 }
