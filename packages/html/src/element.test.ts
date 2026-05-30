@@ -46,7 +46,7 @@ describe("<font-family-input>", () => {
     part(el, "trigger").click();
     expect(part(el, "content").hidden).toBe(false);
     const options = el.shadowRoot?.querySelectorAll('[role="option"]');
-    expect(options && options.length).toBeGreaterThan(0);
+    expect(options?.length ?? 0).toBeGreaterThan(0);
   });
 
   it("filters when typing in the search box (Empty state)", () => {

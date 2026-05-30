@@ -1,21 +1,21 @@
 // @font-family-input/solid — composable, unstyled, virtualized Solid primitives.
 
 import {
+  createFontInput,
   type FontFilter,
   type FontInputState,
   type FontProvider,
-  createFontInput,
   handleComboboxKey,
 } from "@font-family-input/core";
 import { createVirtualizer } from "@tanstack/solid-virtual";
 import {
   type Accessor,
   type Component,
-  type JSX,
-  Show,
   createEffect,
   createSignal,
+  type JSX,
   onCleanup,
+  Show,
 } from "solid-js";
 import { Portal as SolidPortal } from "solid-js/web";
 import {
@@ -227,7 +227,6 @@ export const List: Component<ListProps> = (props) => {
         {virtualizer.getVirtualItems().map((row) => {
           const font = state().filtered[row.index];
           if (!font) return null;
-          const index = () => row.index;
           return (
             <div
               data-index={row.index}
@@ -241,7 +240,7 @@ export const List: Component<ListProps> = (props) => {
               }}
             >
               <ItemContext.Provider value={{ font, index: row.index }}>
-                {props.children(font, index)}
+                {props.children(font, () => row.index)}
               </ItemContext.Provider>
             </div>
           );
