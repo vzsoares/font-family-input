@@ -1,7 +1,7 @@
 {
-  "name": "@font-family-input/react",
+  "name": "@font-family-input/vue",
   "version": "0.0.0",
-  "description": "Composable, unstyled React primitives for a virtualized font-family picker.",
+  "description": "Composable, unstyled Vue primitives for a virtualized font-family picker.",
   "type": "module",
   "license": "MIT",
   "sideEffects": false,
@@ -19,23 +19,19 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@font-family-input/core": "workspace:*"
   },
   "peerDependencies": {
-    "@tanstack/react-virtual": "^3.11.2",
-    "react": ">=18",
-    "react-dom": ">=18"
+    "@tanstack/vue-virtual": "^3.11.2",
+    "vue": ">=3.3"
   },
   "devDependencies": {
-    "@tanstack/react-virtual": "^3.11.2",
-    "@testing-library/react": "^16.1.0",
-    "@testing-library/user-event": "^14.5.2",
-    "@types/react": "^19.0.7",
-    "@types/react-dom": "^19.0.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "@tanstack/vue-virtual": "^3.11.2",
+    "@vue/test-utils": "^2.4.6",
+    "vue": "^3.5.13",
+    "vue-tsc": "^2.2.0"
   }
 }

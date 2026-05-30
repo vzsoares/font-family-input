@@ -1,14 +1,24 @@
 ---
 "@font-family-input/core": minor
 "@font-family-input/react": minor
+"@font-family-input/vue": minor
+"@font-family-input/html": minor
 ---
 
 Initial release: a composable, headless, virtualized font-family picker.
 
 - `@font-family-input/core` — framework-agnostic engine: reactive store, search
   filtering, WAI-ARIA combobox keyboard logic, a pluggable `FontProvider`
-  contract, and a default Google Fonts provider with a bundled offline catalog.
+  contract, a default Google Fonts provider with a bundled offline catalog, and
+  an async `googleFontsApiProvider` backed by the live Google Fonts Developer API
+  (with offline fallback).
 - `@font-family-input/react` — unstyled, composable React primitives
   (`Root`, `Trigger`, `Portal`, `Content`, `Search`, `List`, `Item`, `Empty`)
   with list virtualization via `@tanstack/react-virtual`, controlled +
   uncontrolled value support, and a `useFontInput` escape hatch.
+- `@font-family-input/vue` — the same primitives for Vue 3 (`FontInputRoot`,
+  `FontInputTrigger`, …) with `v-model`, virtualization via
+  `@tanstack/vue-virtual`, and a `useFontInput` composable.
+- `@font-family-input/html` — a framework-agnostic `<font-family-input>` custom
+  element wrapping the core, styleable via `::part(...)`, emitting a `change`
+  event on selection.

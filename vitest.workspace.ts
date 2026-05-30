@@ -1,3 +1,8 @@
 import { defineWorkspace } from "vitest/config";
 
-export default defineWorkspace(["packages/core", "packages/react"]);
+export default defineWorkspace([
+  "packages/core",
+  "packages/react",
+  "packages/vue",
+  "packages/html",
+]);

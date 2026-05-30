@@ -28,11 +28,14 @@ unstyled adapter you compose and style yourself.
 
 | Package | Description | Status |
 | ------- | ----------- | ------ |
-| [`@font-family-input/core`](./packages/core) | Headless engine: store, filter, keyboard, provider contract, Google provider | ✅ initial |
+| [`@font-family-input/core`](./packages/core) | Headless engine: store, filter, keyboard, provider contract, Google + live-API providers | ✅ initial |
 | [`@font-family-input/react`](./packages/react) | Composable, unstyled, virtualized React primitives | ✅ initial |
-| `@font-family-input/vue` | Vue adapter | 🔜 planned |
+| [`@font-family-input/vue`](./packages/vue) | Composable, unstyled, virtualized Vue 3 primitives | ✅ initial |
+| [`@font-family-input/html`](./packages/html) | `<font-family-input>` Web Component | ✅ initial |
 | `@font-family-input/angular` | Angular adapter | 🔜 planned |
-| `@font-family-input/html` | `<font-family-input>` Web Component | 🔜 planned |
+| `@font-family-input/svelte` | Svelte adapter | 🔜 planned |
+| `@font-family-input/preact` | Preact adapter | 🔜 planned |
+| `@font-family-input/solid` | Solid adapter | 🔜 planned |
 
 ## Quick start (React)
 
@@ -78,6 +81,27 @@ const myProvider: FontProvider = {
   listFonts: () => [{ family: "My Brand Sans" }, { family: "My Brand Serif" }],
   loadFont: () => {}, // already loaded via @font-face
 };
+```
+
+Or fetch the full live Google Fonts catalog (≈1,800 families) with an API key —
+falls back to the bundled list on error:
+
+```ts
+import { googleFontsApiProvider } from "@font-family-input/core";
+
+const provider = googleFontsApiProvider({ apiKey: import.meta.env.VITE_GF_KEY });
+```
+
+### Other frameworks
+
+```ts
+// Vue
+import { FontInputRoot, FontInputTrigger /* … */ } from "@font-family-input/vue";
+
+// Plain HTML / any framework — a custom element
+import { defineFontFamilyInput } from "@font-family-input/html";
+defineFontFamilyInput();
+// <font-family-input value="Inter"></font-family-input>
 ```
 
 ## Documentation & live preview

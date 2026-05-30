@@ -1,0 +1,28 @@
+{
+  "name": "@font-family-input/html",
+  "version": "0.0.0",
+  "description": "A framework-agnostic <font-family-input> custom element for picking font families.",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": ["**/define.*", "**/*.css"],
+  "files": ["dist"],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@font-family-input/core": "workspace:*",
+    "@tanstack/virtual-core": "^3.11.2"
+  }
+}

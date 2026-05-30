@@ -10,21 +10,10 @@ export default defineConfig({
       fileName: (format) => (format === "es" ? "index.js" : "index.cjs"),
     },
     rollupOptions: {
-      external: [
-        "react",
-        "react-dom",
-        "react/jsx-runtime",
-        "@tanstack/react-virtual",
-        "@font-family-input/core",
-      ],
+      external: ["@font-family-input/core"],
     },
     sourcemap: true,
     target: "es2022",
   },
   plugins: [dts({ rollupTypes: true, tsconfigPath: "./tsconfig.json" })],
-  test: {
-    environment: "jsdom",
-    globals: true,
-    setupFiles: ["../../test/setup.ts"],
-  },
 });

@@ -16,6 +16,11 @@ export {
   googleFontsProvider,
   type GoogleFontsProviderOptions,
 } from "./providers/google";
+export {
+  googleFontsApiProvider,
+  type GoogleFontsApiProviderOptions,
+  type GoogleFontsSort,
+} from "./providers/google-api";
 
 // Filtering
 export { defaultFilter, type FontFilter } from "./filter";
