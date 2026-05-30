@@ -1,0 +1,37 @@
+{
+  "name": "@font-family-input/solid",
+  "version": "0.0.0",
+  "description": "Composable, unstyled Solid primitives for a virtualized font-family picker.",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": false,
+  "files": ["dist"],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@font-family-input/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "@tanstack/solid-virtual": "^3.11.2",
+    "solid-js": "^1.9.0"
+  },
+  "devDependencies": {
+    "@solidjs/testing-library": "^0.8.10",
+    "@tanstack/solid-virtual": "^3.11.2",
+    "solid-js": "^1.9.4",
+    "vite-plugin-solid": "^2.11.0"
+  }
+}

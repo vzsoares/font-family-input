@@ -32,10 +32,10 @@ unstyled adapter you compose and style yourself.
 | [`@font-family-input/react`](./packages/react) | Composable, unstyled, virtualized React primitives | ✅ initial |
 | [`@font-family-input/vue`](./packages/vue) | Composable, unstyled, virtualized Vue 3 primitives | ✅ initial |
 | [`@font-family-input/preact`](./packages/preact) | Composable, unstyled, virtualized Preact primitives | ✅ initial |
+| [`@font-family-input/solid`](./packages/solid) | Composable, unstyled, virtualized Solid primitives | ✅ initial |
 | [`@font-family-input/html`](./packages/html) | `<font-family-input>` Web Component (CDN-ready) | ✅ initial |
-| `@font-family-input/angular` | Angular adapter | 🔜 planned |
 | `@font-family-input/svelte` | Svelte adapter | 🔜 planned |
-| `@font-family-input/solid` | Solid adapter | 🔜 planned |
+| `@font-family-input/angular` | Angular adapter | 🔜 planned |
 
 ## Quick start (React)
 
