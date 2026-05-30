@@ -36,8 +36,8 @@ All 7 packages implemented, typechecked, tested, linted, and built green.
 Gate: **biome clean, 45 unit tests (8 test projects), e2e 3/3, all 7 package builds pass.**
 
 ### Remaining roadmap
-- **Angular adapter** — decision recorded: use **ng-packagr**. Not started.
-- Consider adding a `@font-family-input/angular` package using ng-packagr for proper Angular library output.
+
+Nothing planned — all adapter targets are shipped.
 
 ## Quality gate (run before delivering ANY change)
 

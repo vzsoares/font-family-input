@@ -190,7 +190,6 @@ Flag your preference; otherwise I proceed with Changesets.
    dry-run publish.
 
 ## Post-v1 backlog
-- `@font-family-input/vue`, `@font-family-input/angular` adapters.
 - `@font-family-input/html` Web Component (`<font-family-input>`).
 - Live/async Google Fonts API provider (catalog pagination + API key).
 - Extra providers: Bunny Fonts, Fontsource, self-hosted.

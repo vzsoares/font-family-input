@@ -24,7 +24,6 @@
 | [`@font-family-input/solid`](./packages/solid) | Composable, unstyled, virtualized Solid primitives | ✅ v0 |
 | [`@font-family-input/svelte`](./packages/svelte) | Composable, unstyled, virtualized Svelte 5 primitives | ✅ v0 |
 | [`@font-family-input/html`](./packages/html) | `<font-family-input>` Web Component, CDN-ready UMD build | ✅ v0 |
-| `@font-family-input/angular` | Angular adapter | 🔜 planned |
 
 ## Quick start
 
